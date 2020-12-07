@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b8e36a61a77d47d1a677adccf81fd1cb" Name="Diagram1">
+        <EntityTypeShape EntityType="Backyard_PortableModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblAttchmnt" Width="1.5" PointX="10.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblBldg" Width="1.5" PointX="6" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblBldgOptn" Width="1.5" PointX="8.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblBldgStts_admn" Width="1.5" PointX="3.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblClr" Width="1.5" PointX="3.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblCstmr" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblDlr" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblDlrLgn" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblDrvr" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblFnncCmpny" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblFnncTyp_admn" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblMnfctrr_admn" Width="1.5" PointX="3.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblOptn" Width="1.5" PointX="6" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblOrdr" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblOrdrStts_admn" Width="1.5" PointX="6" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblPmnt" Width="1.5" PointX="13.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblPmntMthd_admn" Width="1.5" PointX="11.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblStyl" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblStylSz" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblStylTyp_admn" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblSz" Width="1.5" PointX="3" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblTxCd" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Backyard_PortableModel.tblUsrLgn" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Style_has_one_or_more_related_Style_Size_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+        <AssociationConnector Association="Backyard_PortableModel.This_Size_has_one_or_more_related_Stly_Size_Records_and_cannot_be_deleted__" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

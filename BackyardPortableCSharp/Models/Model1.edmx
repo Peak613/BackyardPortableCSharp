@@ -1,0 +1,1901 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Backyard_PortableModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAttchmnt">
+          <Key>
+            <PropertyRef Name="ordrIDfk" />
+            <PropertyRef Name="AttchmntID" />
+          </Key>
+          <Property Name="ordrIDfk" Type="int" Nullable="false" />
+          <Property Name="AttchmntID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttchmntNm" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attchmnt" Type="image" />
+        </EntityType>
+        <EntityType Name="tblBldg">
+          <Key>
+            <PropertyRef Name="BldgID" />
+          </Key>
+          <Property Name="BldgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnqNmbr" Type="int" />
+          <Property Name="SrlNmbr" Type="nvarchar" MaxLength="50" />
+          <Property Name="BsPrc" Type="money" />
+          <Property Name="isAvlbl" Type="bit" />
+          <Property Name="StlyIDfk" Type="int" />
+          <Property Name="SzIDfk" Type="int" />
+          <Property Name="MnfctrrIDfk" Type="int" />
+          <Property Name="DlrIDfk" Type="int" />
+          <Property Name="BldgSttsIDfk" Type="int" />
+          <Property Name="RfClrIDfk" Type="int" />
+          <Property Name="SdClrIDfk" Type="int" />
+          <Property Name="TrmClrIDfk" Type="int" />
+        </EntityType>
+        <EntityType Name="tblBldgOptn">
+          <Key>
+            <PropertyRef Name="BldgIDfk" />
+            <PropertyRef Name="BldgOptnID" />
+          </Key>
+          <Property Name="BldgIDfk" Type="int" Nullable="false" />
+          <Property Name="BldgOptnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptnIDfk" Type="int" />
+          <Property Name="OptnPrc" Type="money" />
+        </EntityType>
+        <EntityType Name="tblBldgStts_admn">
+          <Key>
+            <PropertyRef Name="BldgSttsID" />
+          </Key>
+          <Property Name="BldgSttsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BldgStts" Type="nvarchar" MaxLength="50" />
+          <Property Name="BldgSttsOrdrBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tblClrs">
+          <Key>
+            <PropertyRef Name="ClrID" />
+          </Key>
+          <Property Name="ClrID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dscrptn" Type="nvarchar" MaxLength="25" />
+          <Property Name="HxVlu" Type="nvarchar" MaxLength="6" />
+          <Property Name="ClrCd" Type="nvarchar" MaxLength="20" />
+          <Property Name="R" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="G" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="B" Type="numeric" Precision="3" Scale="0" />
+          <Property Name="ClrFm" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClrUs" Type="nvarchar" MaxLength="50" />
+          <Property Name="WtFrClr" Type="bit" />
+          <Property Name="ActvClr" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblCstmr">
+          <Key>
+            <PropertyRef Name="CstmrID" />
+          </Key>
+          <Property Name="CstmrID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cstmr" Type="nvarchar" MaxLength="50" />
+          <Property Name="CstmrPhn" Type="nvarchar" MaxLength="10" />
+          <Property Name="CstmrEml" Type="nvarchar" MaxLength="50" />
+          <Property Name="CstrmStrt" Type="nvarchar" MaxLength="50" />
+          <Property Name="CstmrCty" Type="nvarchar" MaxLength="50" />
+          <Property Name="CstmrSt" Type="nvarchar" MaxLength="2" />
+          <Property Name="CstmrZp" Type="nvarchar" MaxLength="9" />
+          <Property Name="TxCdIDfk" Type="int" />
+          <Property Name="CstmrNts" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblDlr">
+          <Key>
+            <PropertyRef Name="DlrID" />
+          </Key>
+          <Property Name="DlrID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DlrActv" Type="bit" />
+          <Property Name="Dlr" Type="nvarchar" MaxLength="50" />
+          <Property Name="CmmssnRt" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="DlrStrt" Type="nvarchar" MaxLength="50" />
+          <Property Name="DlrCty" Type="nvarchar" MaxLength="50" />
+          <Property Name="DlrSt" Type="nvarchar" MaxLength="2" />
+          <Property Name="DlrZp" Type="nvarchar" MaxLength="9" />
+          <Property Name="TxCdIDfk" Type="int" />
+          <Property Name="DlrNts" Type="nvarchar" MaxLength="250" />
+          <Property Name="PrmryCntct" Type="nvarchar" MaxLength="50" />
+          <Property Name="CntctPhn" Type="nvarchar" MaxLength="10" />
+          <Property Name="CntctEml" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDlrLgn">
+          <Key>
+            <PropertyRef Name="DlrIDfk" />
+            <PropertyRef Name="DlrLgnID" />
+          </Key>
+          <Property Name="DlrIDfk" Type="int" Nullable="false" />
+          <Property Name="DlrLgnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DlrLgn" Type="nvarchar" MaxLength="20" />
+          <Property Name="DlrPwrd" Type="nvarchar" MaxLength="20" />
+          <Property Name="DlrAccssLvl" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="tblDrvr">
+          <Key>
+            <PropertyRef Name="DrvrID" />
+          </Key>
+          <Property Name="DrvrID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Drvr" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrvrPhn" Type="nvarchar" MaxLength="10" />
+          <Property Name="DrvrEml" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrvrStrt" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrvrCty" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrvrSt" Type="nvarchar" MaxLength="2" />
+          <Property Name="DrvrZp" Type="nvarchar" MaxLength="9" />
+          <Property Name="TxCdIDfk" Type="int" />
+          <Property Name="DrvrNts" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblFnncCmpny">
+          <Key>
+            <PropertyRef Name="FnncCmpnyID" />
+          </Key>
+          <Property Name="FnncCmpnyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FnncCmpny" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrdrBy" Type="int" />
+          <Property Name="FnncNts" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblFnncTyp_admn">
+          <Key>
+            <PropertyRef Name="FnncTypID" />
+          </Key>
+          <Property Name="FnncTypID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FnncTyp" Type="nvarchar" MaxLength="20" />
+          <Property Name="FnncTypDsc" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMnfctrr_admn">
+          <Key>
+            <PropertyRef Name="MnfctrrID" />
+          </Key>
+          <Property Name="MnfctrrID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mnfctrr" Type="nvarchar" MaxLength="50" />
+          <Property Name="MnfctrrNts" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblOptn">
+          <Key>
+            <PropertyRef Name="OptnID" />
+          </Key>
+          <Property Name="OptnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Optn" Type="nvarchar" MaxLength="50" />
+          <Property Name="OptnDscrptn" Type="nvarchar" MaxLength="50" />
+          <Property Name="OptnPrc" Type="money" />
+        </EntityType>
+        <EntityType Name="tblOrdr">
+          <Key>
+            <PropertyRef Name="OrdrID" />
+          </Key>
+          <Property Name="OrdrID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BldgIDfk" Type="int" />
+          <Property Name="DlrIDfk" Type="int" />
+          <Property Name="CstmrIDfk" Type="int" />
+          <Property Name="DrvrIDfk" Type="int" />
+          <Property Name="FnncTypIDfk" Type="int" />
+          <Property Name="OrdrSttsIDfk" Type="int" />
+          <Property Name="FnncCmpnyIDfk" Type="int" />
+          <Property Name="TxCdIDfk" Type="int" />
+          <Property Name="DlvryStrt" Type="nvarchar" MaxLength="50" />
+          <Property Name="DlvryCty" Type="nvarchar" MaxLength="50" />
+          <Property Name="DlvrySt" Type="nvarchar" MaxLength="2" />
+          <Property Name="DlvryZp" Type="nvarchar" MaxLength="9" />
+          <Property Name="Apprvd" Type="bit" />
+          <Property Name="Lckd" Type="bit" />
+          <Property Name="BldgLckd" Type="bit" />
+          <Property Name="DlvryAddrssSm" Type="bit" />
+          <Property Name="Pd" Type="bit" />
+          <Property Name="Dlvrd" Type="bit" />
+          <Property Name="DtOrdr" Type="date" />
+          <Property Name="DtPd" Type="date" />
+          <Property Name="DtDlvrPlnnd" Type="date" />
+          <Property Name="DtDlvrd" Type="date" />
+          <Property Name="DtCnclld" Type="date" />
+          <Property Name="PrcOnst" Type="money" />
+          <Property Name="PrcDlvry" Type="money" />
+          <Property Name="ScrtyDpst" Type="money" />
+          <Property Name="CstRdctn" Type="money" />
+          <Property Name="CstRdctnNt" Type="money" />
+          <Property Name="AmtRTO" Type="money" />
+          <Property Name="DsctRt" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="DsctAmnt" Type="money" />
+          <Property Name="PrcAdjstmnt" Type="money" />
+          <Property Name="AmtTxbl" Type="money" />
+          <Property Name="AmtTtl" Type="money" />
+          <Property Name="AmtPd" Type="money" />
+          <Property Name="PrcWTx" Type="money" />
+          <Property Name="Pmt" Type="money" />
+          <Property Name="AmtBll" Type="money" />
+          <Property Name="RntTrms" Type="int" />
+          <Property Name="Nts" Type="nvarchar" MaxLength="250" />
+          <Property Name="DlvryNts" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblOrdrStts_admn">
+          <Key>
+            <PropertyRef Name="OrdrSttsID" />
+          </Key>
+          <Property Name="OrdrSttsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrdrStts" Type="nvarchar" MaxLength="25" />
+          <Property Name="SttsOrdrBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPmnt">
+          <Key>
+            <PropertyRef Name="OrdrIDfk" />
+            <PropertyRef Name="PmntID" />
+          </Key>
+          <Property Name="OrdrIDfk" Type="int" Nullable="false" />
+          <Property Name="PmntID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PmntMthIDfk" Type="int" />
+          <Property Name="DtPd" Type="date" />
+          <Property Name="DtRcvd" Type="date" />
+          <Property Name="PmntTtl" Type="money" />
+          <Property Name="PmntDtl" Type="money" />
+          <Property Name="PmntTx" Type="money" />
+          <Property Name="PmntFee" Type="money" />
+          <Property Name="Nmbr" Type="nvarchar" MaxLength="50" />
+          <Property Name="PmntNts" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="tblPmntMthd_admn">
+          <Key>
+            <PropertyRef Name="PmntMthdID" />
+          </Key>
+          <Property Name="PmntMthdID" Type="int" Nullable="false" />
+          <Property Name="PmntMthdCd" Type="nvarchar" MaxLength="5" />
+          <Property Name="PmntMthdDsc" Type="nvarchar" MaxLength="20" />
+          <Property Name="PmntMthdClss" Type="int" />
+          <Property Name="MthdOrdrBy" Type="int" />
+          <Property Name="MthdFees" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="MthdNts" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStyl">
+          <Key>
+            <PropertyRef Name="StylID" />
+          </Key>
+          <Property Name="StylID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Styl" Type="nvarchar" MaxLength="10" />
+          <Property Name="StylDsc" Type="nvarchar" MaxLength="50" />
+          <Property Name="StylTypIDfk" Type="int" />
+          <Property Name="Actv" Type="bit" />
+          <Property Name="Nts" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblStylSz">
+          <Key>
+            <PropertyRef Name="StylIDfk" />
+            <PropertyRef Name="SzIDfk" />
+            <PropertyRef Name="StylSzID" />
+          </Key>
+          <Property Name="StylIDfk" Type="int" Nullable="false" />
+          <Property Name="SzIDfk" Type="int" Nullable="false" />
+          <Property Name="StylSzID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BsPrc" Type="money" />
+          <Property Name="Nts" Type="nvarchar" MaxLength="50" />
+          <Property Name="Actv" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblStylTyp_admn">
+          <Key>
+            <PropertyRef Name="StylTypID" />
+          </Key>
+          <Property Name="StylTypID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StylTyp" Type="nvarchar" MaxLength="15" />
+          <Property Name="OrdrBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tblSz">
+          <Key>
+            <PropertyRef Name="SzID" />
+          </Key>
+          <Property Name="SzID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sz" Type="nvarchar" MaxLength="4" />
+          <Property Name="SzDsc" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="tblTxCd">
+          <Key>
+            <PropertyRef Name="TxCdID" />
+          </Key>
+          <Property Name="TxCdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="St" Type="nvarchar" MaxLength="2" />
+          <Property Name="Cty" Type="nvarchar" MaxLength="50" />
+          <Property Name="CtyCd" Type="nvarchar" MaxLength="10" />
+          <Property Name="CtyTxRt" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="ZpCd" Type="nvarchar" MaxLength="9" />
+          <Property Name="Cnty" Type="nvarchar" MaxLength="50" />
+          <Property Name="CntyCd" Type="nvarchar" MaxLength="10" />
+          <Property Name="CntyTxRt" Type="decimal" Precision="4" Scale="2" />
+        </EntityType>
+        <EntityType Name="tblUsrLgn">
+          <Key>
+            <PropertyRef Name="UsrLgnID" />
+          </Key>
+          <Property Name="UsrLgnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsrLgn" Type="nvarchar" MaxLength="20" />
+          <Property Name="UsrPwrd" Type="nvarchar" MaxLength="20" />
+          <Property Name="UsrAccssLvl" Type="numeric" Precision="1" Scale="0" />
+        </EntityType>
+        <Association Name="This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="1" />
+          <End Role="tblBldgOptn" Type="Self.tblBldgOptn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBldg">
+              <PropertyRef Name="BldgID" />
+            </Principal>
+            <Dependent Role="tblBldgOptn">
+              <PropertyRef Name="BldgIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBldg">
+              <PropertyRef Name="BldgID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="BldgIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblClrs" Type="Self.tblClrs" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClrs">
+              <PropertyRef Name="ClrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="RfClrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblClrs" Type="Self.tblClrs" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClrs">
+              <PropertyRef Name="ClrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="SdClrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblClrs" Type="Self.tblClrs" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClrs">
+              <PropertyRef Name="ClrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="TrmClrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblCstmr" Type="Self.tblCstmr" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCstmr">
+              <PropertyRef Name="CstmrID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="CstmrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__">
+          <End Role="tblDlr" Type="Self.tblDlr" Multiplicity="1" />
+          <End Role="tblDlrLgn" Type="Self.tblDlrLgn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDlr">
+              <PropertyRef Name="DlrID" />
+            </Principal>
+            <Dependent Role="tblDlrLgn">
+              <PropertyRef Name="DlrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblDlr" Type="Self.tblDlr" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDlr">
+              <PropertyRef Name="DlrID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="DlrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblDrvr" Type="Self.tblDrvr" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDrvr">
+              <PropertyRef Name="DrvrID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="DrvrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblFnncCmpny" Type="Self.tblFnncCmpny" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFnncCmpny">
+              <PropertyRef Name="FnncCmpnyID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="FnncCmpnyIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblFnncTyp_admn" Type="Self.tblFnncTyp_admn" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFnncTyp_admn">
+              <PropertyRef Name="FnncTypID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="FnncTypIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblMnfctrr_admn" Type="Self.tblMnfctrr_admn" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMnfctrr_admn">
+              <PropertyRef Name="MnfctrrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="MnfctrrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+          <End Role="tblOptn" Type="Self.tblOptn" Multiplicity="0..1" />
+          <End Role="tblBldgOptn" Type="Self.tblBldgOptn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOptn">
+              <PropertyRef Name="OptnID" />
+            </Principal>
+            <Dependent Role="tblBldgOptn">
+              <PropertyRef Name="OptnIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="1" />
+          <End Role="tblPmnt" Type="Self.tblPmnt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrdr">
+              <PropertyRef Name="OrdrID" />
+            </Principal>
+            <Dependent Role="tblPmnt">
+              <PropertyRef Name="OrdrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblOrdrStts_admn" Type="Self.tblOrdrStts_admn" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrdrStts_admn">
+              <PropertyRef Name="OrdrSttsID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="OrdrSttsIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__">
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="1" />
+          <End Role="tblAttchmnt" Type="Self.tblAttchmnt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrdr">
+              <PropertyRef Name="OrdrID" />
+            </Principal>
+            <Dependent Role="tblAttchmnt">
+              <PropertyRef Name="ordrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+          <End Role="tblPmntMthd_admn" Type="Self.tblPmntMthd_admn" Multiplicity="0..1" />
+          <End Role="tblPmnt" Type="Self.tblPmnt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPmntMthd_admn">
+              <PropertyRef Name="PmntMthdID" />
+            </Principal>
+            <Dependent Role="tblPmnt">
+              <PropertyRef Name="PmntMthIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Size_has_one_or_more_related_Stly-Size_Records_and_cannot_be_deleted__">
+          <End Role="tblSz" Type="Self.tblSz" Multiplicity="1" />
+          <End Role="tblStylSz" Type="Self.tblStylSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSz">
+              <PropertyRef Name="SzID" />
+            </Principal>
+            <Dependent Role="tblStylSz">
+              <PropertyRef Name="SzIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblBldgStts_admn" Type="Self.tblBldgStts_admn" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBldgStts_admn">
+              <PropertyRef Name="BldgSttsID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="BldgSttsIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Style_has_one_or_more_related_Style-Size_Records_and_cannot_be_deleted__">
+          <End Role="tblStyl" Type="Self.tblStyl" Multiplicity="1" />
+          <End Role="tblStylSz" Type="Self.tblStylSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStyl">
+              <PropertyRef Name="StylID" />
+            </Principal>
+            <Dependent Role="tblStylSz">
+              <PropertyRef Name="StylIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__">
+          <End Role="tblStylTyp_admn" Type="Self.tblStylTyp_admn" Multiplicity="0..1" />
+          <End Role="tblStyl" Type="Self.tblStyl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStylTyp_admn">
+              <PropertyRef Name="StylTypID" />
+            </Principal>
+            <Dependent Role="tblStyl">
+              <PropertyRef Name="StylTypIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'This_Style-Size_has_one_or_more_related_Building_Records_and_cannot_be_deleted__' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="This_Style-Size_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" />-->
+        <Association Name="This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblCstmr" Type="Self.tblCstmr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblCstmr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblDlr" Type="Self.tblDlr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblDlr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblDrvr" Type="Self.tblDrvr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblDrvr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Backyard_PortableModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAttchmnt" EntityType="Self.tblAttchmnt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBldg" EntityType="Self.tblBldg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBldgOptn" EntityType="Self.tblBldgOptn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBldgStts_admn" EntityType="Self.tblBldgStts_admn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClrs" EntityType="Self.tblClrs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCstmr" EntityType="Self.tblCstmr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDlr" EntityType="Self.tblDlr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDlrLgn" EntityType="Self.tblDlrLgn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDrvr" EntityType="Self.tblDrvr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFnncCmpny" EntityType="Self.tblFnncCmpny" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFnncTyp_admn" EntityType="Self.tblFnncTyp_admn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMnfctrr_admn" EntityType="Self.tblMnfctrr_admn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOptn" EntityType="Self.tblOptn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrdr" EntityType="Self.tblOrdr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrdrStts_admn" EntityType="Self.tblOrdrStts_admn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPmnt" EntityType="Self.tblPmnt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPmntMthd_admn" EntityType="Self.tblPmntMthd_admn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStyl" EntityType="Self.tblStyl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStylSz" EntityType="Self.tblStylSz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStylTyp_admn" EntityType="Self.tblStylTyp_admn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSz" EntityType="Self.tblSz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTxCd" EntityType="Self.tblTxCd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsrLgn" EntityType="Self.tblUsrLgn" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" Association="Self.This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+            <End Role="tblBldg" EntitySet="tblBldg" />
+            <End Role="tblBldgOptn" EntitySet="tblBldgOptn" />
+          </AssociationSet>
+          <AssociationSet Name="This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblBldg" EntitySet="tblBldg" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" Association="Self.This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblClrs" EntitySet="tblClrs" />
+            <End Role="tblBldg" EntitySet="tblBldg" />
+          </AssociationSet>
+          <AssociationSet Name="This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" Association="Self.This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblClrs" EntitySet="tblClrs" />
+            <End Role="tblBldg" EntitySet="tblBldg" />
+          </AssociationSet>
+          <AssociationSet Name="This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" Association="Self.This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblClrs" EntitySet="tblClrs" />
+            <End Role="tblBldg" EntitySet="tblBldg" />
+          </AssociationSet>
+          <AssociationSet Name="This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblCstmr" EntitySet="tblCstmr" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__" Association="Self.This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__">
+            <End Role="tblDlr" EntitySet="tblDlr" />
+            <End Role="tblDlrLgn" EntitySet="tblDlrLgn" />
+          </AssociationSet>
+          <AssociationSet Name="This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblDlr" EntitySet="tblDlr" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblDrvr" EntitySet="tblDrvr" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblFnncCmpny" EntitySet="tblFnncCmpny" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblFnncTyp_admn" EntitySet="tblFnncTyp_admn" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" Association="Self.This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblMnfctrr_admn" EntitySet="tblMnfctrr_admn" />
+            <End Role="tblBldg" EntitySet="tblBldg" />
+          </AssociationSet>
+          <AssociationSet Name="This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" Association="Self.This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+            <End Role="tblOptn" EntitySet="tblOptn" />
+            <End Role="tblBldgOptn" EntitySet="tblBldgOptn" />
+          </AssociationSet>
+          <AssociationSet Name="This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" Association="Self.This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+            <End Role="tblPmnt" EntitySet="tblPmnt" />
+          </AssociationSet>
+          <AssociationSet Name="This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblOrdrStts_admn" EntitySet="tblOrdrStts_admn" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__" Association="Self.This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__">
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+            <End Role="tblAttchmnt" EntitySet="tblAttchmnt" />
+          </AssociationSet>
+          <AssociationSet Name="This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" Association="Self.This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+            <End Role="tblPmntMthd_admn" EntitySet="tblPmntMthd_admn" />
+            <End Role="tblPmnt" EntitySet="tblPmnt" />
+          </AssociationSet>
+          <AssociationSet Name="This_Size_has_one_or_more_related_Stly-Size_Records_and_cannot_be_deleted__" Association="Self.This_Size_has_one_or_more_related_Stly-Size_Records_and_cannot_be_deleted__">
+            <End Role="tblSz" EntitySet="tblSz" />
+            <End Role="tblStylSz" EntitySet="tblStylSz" />
+          </AssociationSet>
+          <AssociationSet Name="This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" Association="Self.This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblBldgStts_admn" EntitySet="tblBldgStts_admn" />
+            <End Role="tblBldg" EntitySet="tblBldg" />
+          </AssociationSet>
+          <AssociationSet Name="This_Style_has_one_or_more_related_Style-Size_Records_and_cannot_be_deleted__" Association="Self.This_Style_has_one_or_more_related_Style-Size_Records_and_cannot_be_deleted__">
+            <End Role="tblStyl" EntitySet="tblStyl" />
+            <End Role="tblStylSz" EntitySet="tblStylSz" />
+          </AssociationSet>
+          <AssociationSet Name="This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__" Association="Self.This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__">
+            <End Role="tblStylTyp_admn" EntitySet="tblStylTyp_admn" />
+            <End Role="tblStyl" EntitySet="tblStyl" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCd" />
+            <End Role="tblCstmr" EntitySet="tblCstmr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCd" />
+            <End Role="tblDlr" EntitySet="tblDlr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCd" />
+            <End Role="tblDrvr" EntitySet="tblDrvr" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCd" />
+            <End Role="tblOrdr" EntitySet="tblOrdr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Backyard_PortableModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAttchmnt">
+          <Key>
+            <PropertyRef Name="ordrIDfk" />
+            <PropertyRef Name="AttchmntID" />
+          </Key>
+          <Property Name="ordrIDfk" Type="Int32" Nullable="false" />
+          <Property Name="AttchmntID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttchmntNm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attchmnt" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tblOrdr" Relationship="Self.This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__" FromRole="tblAttchmnt" ToRole="tblOrdr" />
+        </EntityType>
+        <EntityType Name="tblBldg">
+          <Key>
+            <PropertyRef Name="BldgID" />
+          </Key>
+          <Property Name="BldgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnqNmbr" Type="Int32" />
+          <Property Name="SrlNmbr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BsPrc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="isAvlbl" Type="Boolean" />
+          <Property Name="StlyIDfk" Type="Int32" />
+          <Property Name="SzIDfk" Type="Int32" />
+          <Property Name="MnfctrrIDfk" Type="Int32" />
+          <Property Name="DlrIDfk" Type="Int32" />
+          <Property Name="BldgSttsIDfk" Type="Int32" />
+          <Property Name="RfClrIDfk" Type="Int32" />
+          <Property Name="SdClrIDfk" Type="Int32" />
+          <Property Name="TrmClrIDfk" Type="Int32" />
+          <NavigationProperty Name="tblBldgOptns" Relationship="Self.This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" FromRole="tblBldg" ToRole="tblBldgOptn" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblBldg" ToRole="tblOrdr" />
+          <NavigationProperty Name="tblClr" Relationship="Self.This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" FromRole="tblBldg" ToRole="tblClrs" />
+          <NavigationProperty Name="tblClr1" Relationship="Self.This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" FromRole="tblBldg" ToRole="tblClrs" />
+          <NavigationProperty Name="tblClr2" Relationship="Self.This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" FromRole="tblBldg" ToRole="tblClrs" />
+          <NavigationProperty Name="tblMnfctrr_admn" Relationship="Self.This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" FromRole="tblBldg" ToRole="tblMnfctrr_admn" />
+          <NavigationProperty Name="tblBldgStts_admn" Relationship="Self.This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" FromRole="tblBldg" ToRole="tblBldgStts_admn" />
+        </EntityType>
+        <EntityType Name="tblBldgOptn">
+          <Key>
+            <PropertyRef Name="BldgIDfk" />
+            <PropertyRef Name="BldgOptnID" />
+          </Key>
+          <Property Name="BldgIDfk" Type="Int32" Nullable="false" />
+          <Property Name="BldgOptnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptnIDfk" Type="Int32" />
+          <Property Name="OptnPrc" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="tblBldg" Relationship="Self.This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" FromRole="tblBldgOptn" ToRole="tblBldg" />
+          <NavigationProperty Name="tblOptn" Relationship="Self.This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" FromRole="tblBldgOptn" ToRole="tblOptn" />
+        </EntityType>
+        <EntityType Name="tblBldgStts_admn">
+          <Key>
+            <PropertyRef Name="BldgSttsID" />
+          </Key>
+          <Property Name="BldgSttsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BldgStts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BldgSttsOrdrBy" Type="Int32" />
+          <NavigationProperty Name="tblBldgs" Relationship="Self.This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" FromRole="tblBldgStts_admn" ToRole="tblBldg" />
+        </EntityType>
+        <EntityType Name="tblClr">
+          <Key>
+            <PropertyRef Name="ClrID" />
+          </Key>
+          <Property Name="ClrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dscrptn" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="HxVlu" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ClrCd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="R" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="G" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="B" Type="Decimal" Precision="3" Scale="0" />
+          <Property Name="ClrFm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClrUs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WtFrClr" Type="Boolean" />
+          <Property Name="ActvClr" Type="Boolean" />
+          <NavigationProperty Name="tblBldgs" Relationship="Self.This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" FromRole="tblClrs" ToRole="tblBldg" />
+          <NavigationProperty Name="tblBldgs1" Relationship="Self.This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" FromRole="tblClrs" ToRole="tblBldg" />
+          <NavigationProperty Name="tblBldgs2" Relationship="Self.This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" FromRole="tblClrs" ToRole="tblBldg" />
+        </EntityType>
+        <EntityType Name="tblCstmr">
+          <Key>
+            <PropertyRef Name="CstmrID" />
+          </Key>
+          <Property Name="CstmrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cstmr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CstmrPhn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CstmrEml" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CstrmStrt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CstmrCty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CstmrSt" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="CstmrZp" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="TxCdIDfk" Type="Int32" />
+          <Property Name="CstmrNts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblCstmr" ToRole="tblOrdr" />
+          <NavigationProperty Name="tblTxCd" Relationship="Self.This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__" FromRole="tblCstmr" ToRole="tblTxCd" />
+        </EntityType>
+        <EntityType Name="tblDlr">
+          <Key>
+            <PropertyRef Name="DlrID" />
+          </Key>
+          <Property Name="DlrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DlrActv" Type="Boolean" />
+          <Property Name="Dlr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CmmssnRt" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="DlrStrt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DlrCty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DlrSt" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="DlrZp" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="TxCdIDfk" Type="Int32" />
+          <Property Name="DlrNts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PrmryCntct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CntctPhn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CntctEml" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblDlrLgns" Relationship="Self.This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__" FromRole="tblDlr" ToRole="tblDlrLgn" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblDlr" ToRole="tblOrdr" />
+          <NavigationProperty Name="tblTxCd" Relationship="Self.This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__" FromRole="tblDlr" ToRole="tblTxCd" />
+        </EntityType>
+        <EntityType Name="tblDlrLgn">
+          <Key>
+            <PropertyRef Name="DlrIDfk" />
+            <PropertyRef Name="DlrLgnID" />
+          </Key>
+          <Property Name="DlrIDfk" Type="Int32" Nullable="false" />
+          <Property Name="DlrLgnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DlrLgn" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DlrPwrd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DlrAccssLvl" Type="Decimal" Precision="1" Scale="0" />
+          <NavigationProperty Name="tblDlr" Relationship="Self.This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__" FromRole="tblDlrLgn" ToRole="tblDlr" />
+        </EntityType>
+        <EntityType Name="tblDrvr">
+          <Key>
+            <PropertyRef Name="DrvrID" />
+          </Key>
+          <Property Name="DrvrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Drvr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrvrPhn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DrvrEml" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrvrStrt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrvrCty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrvrSt" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="DrvrZp" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="TxCdIDfk" Type="Int32" />
+          <Property Name="DrvrNts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblDrvr" ToRole="tblOrdr" />
+          <NavigationProperty Name="tblTxCd" Relationship="Self.This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__" FromRole="tblDrvr" ToRole="tblTxCd" />
+        </EntityType>
+        <EntityType Name="tblFnncCmpny">
+          <Key>
+            <PropertyRef Name="FnncCmpnyID" />
+          </Key>
+          <Property Name="FnncCmpnyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FnncCmpny" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrdrBy" Type="Int32" />
+          <Property Name="FnncNts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblFnncCmpny" ToRole="tblOrdr" />
+        </EntityType>
+        <EntityType Name="tblFnncTyp_admn">
+          <Key>
+            <PropertyRef Name="FnncTypID" />
+          </Key>
+          <Property Name="FnncTypID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FnncTyp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FnncTypDsc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblFnncTyp_admn" ToRole="tblOrdr" />
+        </EntityType>
+        <EntityType Name="tblMnfctrr_admn">
+          <Key>
+            <PropertyRef Name="MnfctrrID" />
+          </Key>
+          <Property Name="MnfctrrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mnfctrr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MnfctrrNts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblBldgs" Relationship="Self.This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" FromRole="tblMnfctrr_admn" ToRole="tblBldg" />
+        </EntityType>
+        <EntityType Name="tblOptn">
+          <Key>
+            <PropertyRef Name="OptnID" />
+          </Key>
+          <Property Name="OptnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Optn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OptnDscrptn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OptnPrc" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="tblBldgOptns" Relationship="Self.This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" FromRole="tblOptn" ToRole="tblBldgOptn" />
+        </EntityType>
+        <EntityType Name="tblOrdr">
+          <Key>
+            <PropertyRef Name="OrdrID" />
+          </Key>
+          <Property Name="OrdrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BldgIDfk" Type="Int32" />
+          <Property Name="DlrIDfk" Type="Int32" />
+          <Property Name="CstmrIDfk" Type="Int32" />
+          <Property Name="DrvrIDfk" Type="Int32" />
+          <Property Name="FnncTypIDfk" Type="Int32" />
+          <Property Name="OrdrSttsIDfk" Type="Int32" />
+          <Property Name="FnncCmpnyIDfk" Type="Int32" />
+          <Property Name="TxCdIDfk" Type="Int32" />
+          <Property Name="DlvryStrt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DlvryCty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DlvrySt" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="DlvryZp" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Apprvd" Type="Boolean" />
+          <Property Name="Lckd" Type="Boolean" />
+          <Property Name="BldgLckd" Type="Boolean" />
+          <Property Name="DlvryAddrssSm" Type="Boolean" />
+          <Property Name="Pd" Type="Boolean" />
+          <Property Name="Dlvrd" Type="Boolean" />
+          <Property Name="DtOrdr" Type="DateTime" Precision="0" />
+          <Property Name="DtPd" Type="DateTime" Precision="0" />
+          <Property Name="DtDlvrPlnnd" Type="DateTime" Precision="0" />
+          <Property Name="DtDlvrd" Type="DateTime" Precision="0" />
+          <Property Name="DtCnclld" Type="DateTime" Precision="0" />
+          <Property Name="PrcOnst" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrcDlvry" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ScrtyDpst" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CstRdctn" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CstRdctnNt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmtRTO" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DsctRt" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="DsctAmnt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrcAdjstmnt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmtTxbl" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmtTtl" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmtPd" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrcWTx" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Pmt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AmtBll" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="RntTrms" Type="Int32" />
+          <Property Name="Nts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DlvryNts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblAttchmnts" Relationship="Self.This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblAttchmnt" />
+          <NavigationProperty Name="tblBldg" Relationship="Self.This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblBldg" />
+          <NavigationProperty Name="tblCstmr" Relationship="Self.This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblCstmr" />
+          <NavigationProperty Name="tblDlr" Relationship="Self.This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblDlr" />
+          <NavigationProperty Name="tblDrvr" Relationship="Self.This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblDrvr" />
+          <NavigationProperty Name="tblFnncCmpny" Relationship="Self.This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblFnncCmpny" />
+          <NavigationProperty Name="tblFnncTyp_admn" Relationship="Self.This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblFnncTyp_admn" />
+          <NavigationProperty Name="tblPmnts" Relationship="Self.This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblPmnt" />
+          <NavigationProperty Name="tblOrdrStts_admn" Relationship="Self.This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblOrdrStts_admn" />
+          <NavigationProperty Name="tblTxCd" Relationship="Self.This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__" FromRole="tblOrdr" ToRole="tblTxCd" />
+        </EntityType>
+        <EntityType Name="tblOrdrStts_admn">
+          <Key>
+            <PropertyRef Name="OrdrSttsID" />
+          </Key>
+          <Property Name="OrdrSttsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrdrStts" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SttsOrdrBy" Type="Int32" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" FromRole="tblOrdrStts_admn" ToRole="tblOrdr" />
+        </EntityType>
+        <EntityType Name="tblPmnt">
+          <Key>
+            <PropertyRef Name="OrdrIDfk" />
+            <PropertyRef Name="PmntID" />
+          </Key>
+          <Property Name="OrdrIDfk" Type="Int32" Nullable="false" />
+          <Property Name="PmntID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PmntMthIDfk" Type="Int32" />
+          <Property Name="DtPd" Type="DateTime" Precision="0" />
+          <Property Name="DtRcvd" Type="DateTime" Precision="0" />
+          <Property Name="PmntTtl" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PmntDtl" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PmntTx" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PmntFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Nmbr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PmntNts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblOrdr" Relationship="Self.This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" FromRole="tblPmnt" ToRole="tblOrdr" />
+          <NavigationProperty Name="tblPmntMthd_admn" Relationship="Self.This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" FromRole="tblPmnt" ToRole="tblPmntMthd_admn" />
+        </EntityType>
+        <EntityType Name="tblPmntMthd_admn">
+          <Key>
+            <PropertyRef Name="PmntMthdID" />
+          </Key>
+          <Property Name="PmntMthdID" Type="Int32" Nullable="false" />
+          <Property Name="PmntMthdCd" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="PmntMthdDsc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PmntMthdClss" Type="Int32" />
+          <Property Name="MthdOrdrBy" Type="Int32" />
+          <Property Name="MthdFees" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="MthdNts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblPmnts" Relationship="Self.This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" FromRole="tblPmntMthd_admn" ToRole="tblPmnt" />
+        </EntityType>
+        <EntityType Name="tblStyl">
+          <Key>
+            <PropertyRef Name="StylID" />
+          </Key>
+          <Property Name="StylID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Styl" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StylDsc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StylTypIDfk" Type="Int32" />
+          <Property Name="Actv" Type="Boolean" />
+          <Property Name="Nts" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tblStylSzs" Relationship="Self.This_Style_has_one_or_more_related_Style_Size_Records_and_cannot_be_deleted__" FromRole="tblStyl" ToRole="tblStylSz" />
+          <NavigationProperty Name="tblStylTyp_admn" Relationship="Self.This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__" FromRole="tblStyl" ToRole="tblStylTyp_admn" />
+        </EntityType>
+        <EntityType Name="tblStylSz">
+          <Key>
+            <PropertyRef Name="StylIDfk" />
+            <PropertyRef Name="SzIDfk" />
+            <PropertyRef Name="StylSzID" />
+          </Key>
+          <Property Name="StylIDfk" Type="Int32" Nullable="false" />
+          <Property Name="SzIDfk" Type="Int32" Nullable="false" />
+          <Property Name="StylSzID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BsPrc" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Nts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Actv" Type="Boolean" />
+          <NavigationProperty Name="tblStyl" Relationship="Self.This_Style_has_one_or_more_related_Style_Size_Records_and_cannot_be_deleted__" FromRole="tblStylSz" ToRole="tblStyl" />
+          <NavigationProperty Name="tblSz" Relationship="Self.This_Size_has_one_or_more_related_Stly_Size_Records_and_cannot_be_deleted__" FromRole="tblStylSz" ToRole="tblSz" />
+        </EntityType>
+        <EntityType Name="tblStylTyp_admn">
+          <Key>
+            <PropertyRef Name="StylTypID" />
+          </Key>
+          <Property Name="StylTypID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StylTyp" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="OrdrBy" Type="Int32" />
+          <NavigationProperty Name="tblStyls" Relationship="Self.This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__" FromRole="tblStylTyp_admn" ToRole="tblStyl" />
+        </EntityType>
+        <EntityType Name="tblSz">
+          <Key>
+            <PropertyRef Name="SzID" />
+          </Key>
+          <Property Name="SzID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sz" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="SzDsc" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStylSzs" Relationship="Self.This_Size_has_one_or_more_related_Stly_Size_Records_and_cannot_be_deleted__" FromRole="tblSz" ToRole="tblStylSz" />
+        </EntityType>
+        <EntityType Name="tblTxCd">
+          <Key>
+            <PropertyRef Name="TxCdID" />
+          </Key>
+          <Property Name="TxCdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="St" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="Cty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CtyCd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CtyTxRt" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="ZpCd" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Cnty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CntyCd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CntyTxRt" Type="Decimal" Precision="4" Scale="2" />
+          <NavigationProperty Name="tblCstmrs" Relationship="Self.This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__" FromRole="tblTxCd" ToRole="tblCstmr" />
+          <NavigationProperty Name="tblDlrs" Relationship="Self.This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__" FromRole="tblTxCd" ToRole="tblDlr" />
+          <NavigationProperty Name="tblDrvrs" Relationship="Self.This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__" FromRole="tblTxCd" ToRole="tblDrvr" />
+          <NavigationProperty Name="tblOrdrs" Relationship="Self.This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__" FromRole="tblTxCd" ToRole="tblOrdr" />
+        </EntityType>
+        <EntityType Name="tblUsrLgn">
+          <Key>
+            <PropertyRef Name="UsrLgnID" />
+          </Key>
+          <Property Name="UsrLgnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsrLgn" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UsrPwrd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UsrAccssLvl" Type="Decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <Association Name="This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__">
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="1" />
+          <End Role="tblAttchmnt" Type="Self.tblAttchmnt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrdr">
+              <PropertyRef Name="OrdrID" />
+            </Principal>
+            <Dependent Role="tblAttchmnt">
+              <PropertyRef Name="ordrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="1" />
+          <End Role="tblBldgOptn" Type="Self.tblBldgOptn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBldg">
+              <PropertyRef Name="BldgID" />
+            </Principal>
+            <Dependent Role="tblBldgOptn">
+              <PropertyRef Name="BldgIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBldg">
+              <PropertyRef Name="BldgID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="BldgIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblClrs" Type="Self.tblClr" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClrs">
+              <PropertyRef Name="ClrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="RfClrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblClrs" Type="Self.tblClr" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClrs">
+              <PropertyRef Name="ClrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="SdClrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblClrs" Type="Self.tblClr" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClrs">
+              <PropertyRef Name="ClrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="TrmClrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblMnfctrr_admn" Type="Self.tblMnfctrr_admn" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMnfctrr_admn">
+              <PropertyRef Name="MnfctrrID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="MnfctrrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+          <End Role="tblBldgStts_admn" Type="Self.tblBldgStts_admn" Multiplicity="0..1" />
+          <End Role="tblBldg" Type="Self.tblBldg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBldgStts_admn">
+              <PropertyRef Name="BldgSttsID" />
+            </Principal>
+            <Dependent Role="tblBldg">
+              <PropertyRef Name="BldgSttsIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+          <End Role="tblOptn" Type="Self.tblOptn" Multiplicity="0..1" />
+          <End Role="tblBldgOptn" Type="Self.tblBldgOptn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOptn">
+              <PropertyRef Name="OptnID" />
+            </Principal>
+            <Dependent Role="tblBldgOptn">
+              <PropertyRef Name="OptnIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblCstmr" Type="Self.tblCstmr" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCstmr">
+              <PropertyRef Name="CstmrID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="CstmrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblCstmr" Type="Self.tblCstmr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblCstmr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__">
+          <End Role="tblDlr" Type="Self.tblDlr" Multiplicity="1" />
+          <End Role="tblDlrLgn" Type="Self.tblDlrLgn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDlr">
+              <PropertyRef Name="DlrID" />
+            </Principal>
+            <Dependent Role="tblDlrLgn">
+              <PropertyRef Name="DlrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblDlr" Type="Self.tblDlr" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDlr">
+              <PropertyRef Name="DlrID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="DlrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblDlr" Type="Self.tblDlr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblDlr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblDrvr" Type="Self.tblDrvr" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDrvr">
+              <PropertyRef Name="DrvrID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="DrvrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblDrvr" Type="Self.tblDrvr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblDrvr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblFnncCmpny" Type="Self.tblFnncCmpny" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFnncCmpny">
+              <PropertyRef Name="FnncCmpnyID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="FnncCmpnyIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblFnncTyp_admn" Type="Self.tblFnncTyp_admn" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFnncTyp_admn">
+              <PropertyRef Name="FnncTypID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="FnncTypIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="1" />
+          <End Role="tblPmnt" Type="Self.tblPmnt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrdr">
+              <PropertyRef Name="OrdrID" />
+            </Principal>
+            <Dependent Role="tblPmnt">
+              <PropertyRef Name="OrdrIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+          <End Role="tblOrdrStts_admn" Type="Self.tblOrdrStts_admn" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOrdrStts_admn">
+              <PropertyRef Name="OrdrSttsID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="OrdrSttsIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__">
+          <End Role="tblTxCd" Type="Self.tblTxCd" Multiplicity="0..1" />
+          <End Role="tblOrdr" Type="Self.tblOrdr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTxCd">
+              <PropertyRef Name="TxCdID" />
+            </Principal>
+            <Dependent Role="tblOrdr">
+              <PropertyRef Name="TxCdIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+          <End Role="tblPmntMthd_admn" Type="Self.tblPmntMthd_admn" Multiplicity="0..1" />
+          <End Role="tblPmnt" Type="Self.tblPmnt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPmntMthd_admn">
+              <PropertyRef Name="PmntMthdID" />
+            </Principal>
+            <Dependent Role="tblPmnt">
+              <PropertyRef Name="PmntMthIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Style_has_one_or_more_related_Style_Size_Records_and_cannot_be_deleted__">
+          <End Role="tblStyl" Type="Self.tblStyl" Multiplicity="1" />
+          <End Role="tblStylSz" Type="Self.tblStylSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStyl">
+              <PropertyRef Name="StylID" />
+            </Principal>
+            <Dependent Role="tblStylSz">
+              <PropertyRef Name="StylIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__">
+          <End Role="tblStylTyp_admn" Type="Self.tblStylTyp_admn" Multiplicity="0..1" />
+          <End Role="tblStyl" Type="Self.tblStyl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStylTyp_admn">
+              <PropertyRef Name="StylTypID" />
+            </Principal>
+            <Dependent Role="tblStyl">
+              <PropertyRef Name="StylTypIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="This_Size_has_one_or_more_related_Stly_Size_Records_and_cannot_be_deleted__">
+          <End Role="tblSz" Type="Self.tblSz" Multiplicity="1" />
+          <End Role="tblStylSz" Type="Self.tblStylSz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSz">
+              <PropertyRef Name="SzID" />
+            </Principal>
+            <Dependent Role="tblStylSz">
+              <PropertyRef Name="SzIDfk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Backyard_PortableEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAttchmnts" EntityType="Self.tblAttchmnt" />
+          <EntitySet Name="tblBldgs" EntityType="Self.tblBldg" />
+          <EntitySet Name="tblBldgOptns" EntityType="Self.tblBldgOptn" />
+          <EntitySet Name="tblBldgStts_admn" EntityType="Self.tblBldgStts_admn" />
+          <EntitySet Name="tblClrs" EntityType="Self.tblClr" />
+          <EntitySet Name="tblCstmrs" EntityType="Self.tblCstmr" />
+          <EntitySet Name="tblDlrs" EntityType="Self.tblDlr" />
+          <EntitySet Name="tblDlrLgns" EntityType="Self.tblDlrLgn" />
+          <EntitySet Name="tblDrvrs" EntityType="Self.tblDrvr" />
+          <EntitySet Name="tblFnncCmpnies" EntityType="Self.tblFnncCmpny" />
+          <EntitySet Name="tblFnncTyp_admn" EntityType="Self.tblFnncTyp_admn" />
+          <EntitySet Name="tblMnfctrr_admn" EntityType="Self.tblMnfctrr_admn" />
+          <EntitySet Name="tblOptns" EntityType="Self.tblOptn" />
+          <EntitySet Name="tblOrdrs" EntityType="Self.tblOrdr" />
+          <EntitySet Name="tblOrdrStts_admn" EntityType="Self.tblOrdrStts_admn" />
+          <EntitySet Name="tblPmnts" EntityType="Self.tblPmnt" />
+          <EntitySet Name="tblPmntMthd_admn" EntityType="Self.tblPmntMthd_admn" />
+          <EntitySet Name="tblStyls" EntityType="Self.tblStyl" />
+          <EntitySet Name="tblStylSzs" EntityType="Self.tblStylSz" />
+          <EntitySet Name="tblStylTyp_admn" EntityType="Self.tblStylTyp_admn" />
+          <EntitySet Name="tblSzs" EntityType="Self.tblSz" />
+          <EntitySet Name="tblTxCds" EntityType="Self.tblTxCd" />
+          <EntitySet Name="tblUsrLgns" EntityType="Self.tblUsrLgn" />
+          <AssociationSet Name="This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__" Association="Self.This_Order_still_has_one_or_more_related_Attachments_and_cannot_be_deleted__">
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+            <End Role="tblAttchmnt" EntitySet="tblAttchmnts" />
+          </AssociationSet>
+          <AssociationSet Name="This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" Association="Self.This_Building_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+            <End Role="tblBldg" EntitySet="tblBldgs" />
+            <End Role="tblBldgOptn" EntitySet="tblBldgOptns" />
+          </AssociationSet>
+          <AssociationSet Name="This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Building_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblBldg" EntitySet="tblBldgs" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" Association="Self.This_Color_has_been_selected_as_a_Roof_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblClrs" EntitySet="tblClrs" />
+            <End Role="tblBldg" EntitySet="tblBldgs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" Association="Self.This_Color_has_been_selected_as_a_Side_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblClrs" EntitySet="tblClrs" />
+            <End Role="tblBldg" EntitySet="tblBldgs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__" Association="Self.This_Color_has_been_selected_as_a_Trim_Color_on_one_or_more_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblClrs" EntitySet="tblClrs" />
+            <End Role="tblBldg" EntitySet="tblBldgs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" Association="Self.This_Manufacturer_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblMnfctrr_admn" EntitySet="tblMnfctrr_admn" />
+            <End Role="tblBldg" EntitySet="tblBldgs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__" Association="Self.This_Status_has_one_or_more_related_Building_Records_and_cannot_be_deleted__">
+            <End Role="tblBldgStts_admn" EntitySet="tblBldgStts_admn" />
+            <End Role="tblBldg" EntitySet="tblBldgs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__" Association="Self.This_Option_has_one_or_more_related_Building_Option_Records_and_cannot_be_deleted__">
+            <End Role="tblOptn" EntitySet="tblOptns" />
+            <End Role="tblBldgOptn" EntitySet="tblBldgOptns" />
+          </AssociationSet>
+          <AssociationSet Name="This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Customer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblCstmr" EntitySet="tblCstmrs" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Customer_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCds" />
+            <End Role="tblCstmr" EntitySet="tblCstmrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__" Association="Self.This_Dealer_has_one_or_more_related_Logins_and_cannot_be_deleted__">
+            <End Role="tblDlr" EntitySet="tblDlrs" />
+            <End Role="tblDlrLgn" EntitySet="tblDlrLgns" />
+          </AssociationSet>
+          <AssociationSet Name="This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Dealer_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblDlr" EntitySet="tblDlrs" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Dealer_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCds" />
+            <End Role="tblDlr" EntitySet="tblDlrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Driver_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblDrvr" EntitySet="tblDrvrs" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Driver_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCds" />
+            <End Role="tblDrvr" EntitySet="tblDrvrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Finance_Company_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblFnncCmpny" EntitySet="tblFnncCmpnies" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Finance_Type_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblFnncTyp_admn" EntitySet="tblFnncTyp_admn" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" Association="Self.This_Order_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+            <End Role="tblPmnt" EntitySet="tblPmnts" />
+          </AssociationSet>
+          <AssociationSet Name="This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__" Association="Self.This_Order_Status_has_one_or_more_related_Order_Records_and_cannot_be_deleted__">
+            <End Role="tblOrdrStts_admn" EntitySet="tblOrdrStts_admn" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__" Association="Self.This_Tax_Code_has_one_or_more_related_Order_records_and_cannot_be_deleted__">
+            <End Role="tblTxCd" EntitySet="tblTxCds" />
+            <End Role="tblOrdr" EntitySet="tblOrdrs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__" Association="Self.This_Payment_Method_has_one_or_more_related_Payment_Records_and_cannot_be_deleted__">
+            <End Role="tblPmntMthd_admn" EntitySet="tblPmntMthd_admn" />
+            <End Role="tblPmnt" EntitySet="tblPmnts" />
+          </AssociationSet>
+          <AssociationSet Name="This_Style_has_one_or_more_related_Style_Size_Records_and_cannot_be_deleted__" Association="Self.This_Style_has_one_or_more_related_Style_Size_Records_and_cannot_be_deleted__">
+            <End Role="tblStyl" EntitySet="tblStyls" />
+            <End Role="tblStylSz" EntitySet="tblStylSzs" />
+          </AssociationSet>
+          <AssociationSet Name="This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__" Association="Self.This_Style_Type_has_one_or_more_related_Style_Records_and_cannot_be_deleted__">
+            <End Role="tblStylTyp_admn" EntitySet="tblStylTyp_admn" />
+            <End Role="tblStyl" EntitySet="tblStyls" />
+          </AssociationSet>
+          <AssociationSet Name="This_Size_has_one_or_more_related_Stly_Size_Records_and_cannot_be_deleted__" Association="Self.This_Size_has_one_or_more_related_Stly_Size_Records_and_cannot_be_deleted__">
+            <End Role="tblSz" EntitySet="tblSzs" />
+            <End Role="tblStylSz" EntitySet="tblStylSzs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Backyard_PortableModelStoreContainer" CdmEntityContainer="Backyard_PortableEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAttchmnts">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblAttchmnt">
+              <MappingFragment StoreEntitySet="tblAttchmnt">
+                <ScalarProperty Name="ordrIDfk" ColumnName="ordrIDfk" />
+                <ScalarProperty Name="AttchmntID" ColumnName="AttchmntID" />
+                <ScalarProperty Name="AttchmntNm" ColumnName="AttchmntNm" />
+                <ScalarProperty Name="Attchmnt" ColumnName="Attchmnt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBldgs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblBldg">
+              <MappingFragment StoreEntitySet="tblBldg">
+                <ScalarProperty Name="BldgID" ColumnName="BldgID" />
+                <ScalarProperty Name="UnqNmbr" ColumnName="UnqNmbr" />
+                <ScalarProperty Name="SrlNmbr" ColumnName="SrlNmbr" />
+                <ScalarProperty Name="BsPrc" ColumnName="BsPrc" />
+                <ScalarProperty Name="isAvlbl" ColumnName="isAvlbl" />
+                <ScalarProperty Name="StlyIDfk" ColumnName="StlyIDfk" />
+                <ScalarProperty Name="SzIDfk" ColumnName="SzIDfk" />
+                <ScalarProperty Name="MnfctrrIDfk" ColumnName="MnfctrrIDfk" />
+                <ScalarProperty Name="DlrIDfk" ColumnName="DlrIDfk" />
+                <ScalarProperty Name="BldgSttsIDfk" ColumnName="BldgSttsIDfk" />
+                <ScalarProperty Name="RfClrIDfk" ColumnName="RfClrIDfk" />
+                <ScalarProperty Name="SdClrIDfk" ColumnName="SdClrIDfk" />
+                <ScalarProperty Name="TrmClrIDfk" ColumnName="TrmClrIDfk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBldgOptns">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblBldgOptn">
+              <MappingFragment StoreEntitySet="tblBldgOptn">
+                <ScalarProperty Name="BldgIDfk" ColumnName="BldgIDfk" />
+                <ScalarProperty Name="BldgOptnID" ColumnName="BldgOptnID" />
+                <ScalarProperty Name="OptnIDfk" ColumnName="OptnIDfk" />
+                <ScalarProperty Name="OptnPrc" ColumnName="OptnPrc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBldgStts_admn">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblBldgStts_admn">
+              <MappingFragment StoreEntitySet="tblBldgStts_admn">
+                <ScalarProperty Name="BldgSttsID" ColumnName="BldgSttsID" />
+                <ScalarProperty Name="BldgStts" ColumnName="BldgStts" />
+                <ScalarProperty Name="BldgSttsOrdrBy" ColumnName="BldgSttsOrdrBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblClrs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblClr">
+              <MappingFragment StoreEntitySet="tblClrs">
+                <ScalarProperty Name="ClrID" ColumnName="ClrID" />
+                <ScalarProperty Name="Dscrptn" ColumnName="Dscrptn" />
+                <ScalarProperty Name="HxVlu" ColumnName="HxVlu" />
+                <ScalarProperty Name="ClrCd" ColumnName="ClrCd" />
+                <ScalarProperty Name="R" ColumnName="R" />
+                <ScalarProperty Name="G" ColumnName="G" />
+                <ScalarProperty Name="B" ColumnName="B" />
+                <ScalarProperty Name="ClrFm" ColumnName="ClrFm" />
+                <ScalarProperty Name="ClrUs" ColumnName="ClrUs" />
+                <ScalarProperty Name="WtFrClr" ColumnName="WtFrClr" />
+                <ScalarProperty Name="ActvClr" ColumnName="ActvClr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCstmrs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblCstmr">
+              <MappingFragment StoreEntitySet="tblCstmr">
+                <ScalarProperty Name="CstmrID" ColumnName="CstmrID" />
+                <ScalarProperty Name="Cstmr" ColumnName="Cstmr" />
+                <ScalarProperty Name="CstmrPhn" ColumnName="CstmrPhn" />
+                <ScalarProperty Name="CstmrEml" ColumnName="CstmrEml" />
+                <ScalarProperty Name="CstrmStrt" ColumnName="CstrmStrt" />
+                <ScalarProperty Name="CstmrCty" ColumnName="CstmrCty" />
+                <ScalarProperty Name="CstmrSt" ColumnName="CstmrSt" />
+                <ScalarProperty Name="CstmrZp" ColumnName="CstmrZp" />
+                <ScalarProperty Name="TxCdIDfk" ColumnName="TxCdIDfk" />
+                <ScalarProperty Name="CstmrNts" ColumnName="CstmrNts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDlrs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblDlr">
+              <MappingFragment StoreEntitySet="tblDlr">
+                <ScalarProperty Name="DlrID" ColumnName="DlrID" />
+                <ScalarProperty Name="DlrActv" ColumnName="DlrActv" />
+                <ScalarProperty Name="Dlr" ColumnName="Dlr" />
+                <ScalarProperty Name="CmmssnRt" ColumnName="CmmssnRt" />
+                <ScalarProperty Name="DlrStrt" ColumnName="DlrStrt" />
+                <ScalarProperty Name="DlrCty" ColumnName="DlrCty" />
+                <ScalarProperty Name="DlrSt" ColumnName="DlrSt" />
+                <ScalarProperty Name="DlrZp" ColumnName="DlrZp" />
+                <ScalarProperty Name="TxCdIDfk" ColumnName="TxCdIDfk" />
+                <ScalarProperty Name="DlrNts" ColumnName="DlrNts" />
+                <ScalarProperty Name="PrmryCntct" ColumnName="PrmryCntct" />
+                <ScalarProperty Name="CntctPhn" ColumnName="CntctPhn" />
+                <ScalarProperty Name="CntctEml" ColumnName="CntctEml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDlrLgns">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblDlrLgn">
+              <MappingFragment StoreEntitySet="tblDlrLgn">
+                <ScalarProperty Name="DlrIDfk" ColumnName="DlrIDfk" />
+                <ScalarProperty Name="DlrLgnID" ColumnName="DlrLgnID" />
+                <ScalarProperty Name="DlrLgn" ColumnName="DlrLgn" />
+                <ScalarProperty Name="DlrPwrd" ColumnName="DlrPwrd" />
+                <ScalarProperty Name="DlrAccssLvl" ColumnName="DlrAccssLvl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDrvrs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblDrvr">
+              <MappingFragment StoreEntitySet="tblDrvr">
+                <ScalarProperty Name="DrvrID" ColumnName="DrvrID" />
+                <ScalarProperty Name="Drvr" ColumnName="Drvr" />
+                <ScalarProperty Name="DrvrPhn" ColumnName="DrvrPhn" />
+                <ScalarProperty Name="DrvrEml" ColumnName="DrvrEml" />
+                <ScalarProperty Name="DrvrStrt" ColumnName="DrvrStrt" />
+                <ScalarProperty Name="DrvrCty" ColumnName="DrvrCty" />
+                <ScalarProperty Name="DrvrSt" ColumnName="DrvrSt" />
+                <ScalarProperty Name="DrvrZp" ColumnName="DrvrZp" />
+                <ScalarProperty Name="TxCdIDfk" ColumnName="TxCdIDfk" />
+                <ScalarProperty Name="DrvrNts" ColumnName="DrvrNts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFnncCmpnies">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblFnncCmpny">
+              <MappingFragment StoreEntitySet="tblFnncCmpny">
+                <ScalarProperty Name="FnncCmpnyID" ColumnName="FnncCmpnyID" />
+                <ScalarProperty Name="FnncCmpny" ColumnName="FnncCmpny" />
+                <ScalarProperty Name="OrdrBy" ColumnName="OrdrBy" />
+                <ScalarProperty Name="FnncNts" ColumnName="FnncNts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFnncTyp_admn">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblFnncTyp_admn">
+              <MappingFragment StoreEntitySet="tblFnncTyp_admn">
+                <ScalarProperty Name="FnncTypID" ColumnName="FnncTypID" />
+                <ScalarProperty Name="FnncTyp" ColumnName="FnncTyp" />
+                <ScalarProperty Name="FnncTypDsc" ColumnName="FnncTypDsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMnfctrr_admn">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblMnfctrr_admn">
+              <MappingFragment StoreEntitySet="tblMnfctrr_admn">
+                <ScalarProperty Name="MnfctrrID" ColumnName="MnfctrrID" />
+                <ScalarProperty Name="Mnfctrr" ColumnName="Mnfctrr" />
+                <ScalarProperty Name="MnfctrrNts" ColumnName="MnfctrrNts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOptns">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblOptn">
+              <MappingFragment StoreEntitySet="tblOptn">
+                <ScalarProperty Name="OptnID" ColumnName="OptnID" />
+                <ScalarProperty Name="Optn" ColumnName="Optn" />
+                <ScalarProperty Name="OptnDscrptn" ColumnName="OptnDscrptn" />
+                <ScalarProperty Name="OptnPrc" ColumnName="OptnPrc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrdrs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblOrdr">
+              <MappingFragment StoreEntitySet="tblOrdr">
+                <ScalarProperty Name="OrdrID" ColumnName="OrdrID" />
+                <ScalarProperty Name="BldgIDfk" ColumnName="BldgIDfk" />
+                <ScalarProperty Name="DlrIDfk" ColumnName="DlrIDfk" />
+                <ScalarProperty Name="CstmrIDfk" ColumnName="CstmrIDfk" />
+                <ScalarProperty Name="DrvrIDfk" ColumnName="DrvrIDfk" />
+                <ScalarProperty Name="FnncTypIDfk" ColumnName="FnncTypIDfk" />
+                <ScalarProperty Name="OrdrSttsIDfk" ColumnName="OrdrSttsIDfk" />
+                <ScalarProperty Name="FnncCmpnyIDfk" ColumnName="FnncCmpnyIDfk" />
+                <ScalarProperty Name="TxCdIDfk" ColumnName="TxCdIDfk" />
+                <ScalarProperty Name="DlvryStrt" ColumnName="DlvryStrt" />
+                <ScalarProperty Name="DlvryCty" ColumnName="DlvryCty" />
+                <ScalarProperty Name="DlvrySt" ColumnName="DlvrySt" />
+                <ScalarProperty Name="DlvryZp" ColumnName="DlvryZp" />
+                <ScalarProperty Name="Apprvd" ColumnName="Apprvd" />
+                <ScalarProperty Name="Lckd" ColumnName="Lckd" />
+                <ScalarProperty Name="BldgLckd" ColumnName="BldgLckd" />
+                <ScalarProperty Name="DlvryAddrssSm" ColumnName="DlvryAddrssSm" />
+                <ScalarProperty Name="Pd" ColumnName="Pd" />
+                <ScalarProperty Name="Dlvrd" ColumnName="Dlvrd" />
+                <ScalarProperty Name="DtOrdr" ColumnName="DtOrdr" />
+                <ScalarProperty Name="DtPd" ColumnName="DtPd" />
+                <ScalarProperty Name="DtDlvrPlnnd" ColumnName="DtDlvrPlnnd" />
+                <ScalarProperty Name="DtDlvrd" ColumnName="DtDlvrd" />
+                <ScalarProperty Name="DtCnclld" ColumnName="DtCnclld" />
+                <ScalarProperty Name="PrcOnst" ColumnName="PrcOnst" />
+                <ScalarProperty Name="PrcDlvry" ColumnName="PrcDlvry" />
+                <ScalarProperty Name="ScrtyDpst" ColumnName="ScrtyDpst" />
+                <ScalarProperty Name="CstRdctn" ColumnName="CstRdctn" />
+                <ScalarProperty Name="CstRdctnNt" ColumnName="CstRdctnNt" />
+                <ScalarProperty Name="AmtRTO" ColumnName="AmtRTO" />
+                <ScalarProperty Name="DsctRt" ColumnName="DsctRt" />
+                <ScalarProperty Name="DsctAmnt" ColumnName="DsctAmnt" />
+                <ScalarProperty Name="PrcAdjstmnt" ColumnName="PrcAdjstmnt" />
+                <ScalarProperty Name="AmtTxbl" ColumnName="AmtTxbl" />
+                <ScalarProperty Name="AmtTtl" ColumnName="AmtTtl" />
+                <ScalarProperty Name="AmtPd" ColumnName="AmtPd" />
+                <ScalarProperty Name="PrcWTx" ColumnName="PrcWTx" />
+                <ScalarProperty Name="Pmt" ColumnName="Pmt" />
+                <ScalarProperty Name="AmtBll" ColumnName="AmtBll" />
+                <ScalarProperty Name="RntTrms" ColumnName="RntTrms" />
+                <ScalarProperty Name="Nts" ColumnName="Nts" />
+                <ScalarProperty Name="DlvryNts" ColumnName="DlvryNts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrdrStts_admn">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblOrdrStts_admn">
+              <MappingFragment StoreEntitySet="tblOrdrStts_admn">
+                <ScalarProperty Name="OrdrSttsID" ColumnName="OrdrSttsID" />
+                <ScalarProperty Name="OrdrStts" ColumnName="OrdrStts" />
+                <ScalarProperty Name="SttsOrdrBy" ColumnName="SttsOrdrBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPmnts">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblPmnt">
+              <MappingFragment StoreEntitySet="tblPmnt">
+                <ScalarProperty Name="OrdrIDfk" ColumnName="OrdrIDfk" />
+                <ScalarProperty Name="PmntID" ColumnName="PmntID" />
+                <ScalarProperty Name="PmntMthIDfk" ColumnName="PmntMthIDfk" />
+                <ScalarProperty Name="DtPd" ColumnName="DtPd" />
+                <ScalarProperty Name="DtRcvd" ColumnName="DtRcvd" />
+                <ScalarProperty Name="PmntTtl" ColumnName="PmntTtl" />
+                <ScalarProperty Name="PmntDtl" ColumnName="PmntDtl" />
+                <ScalarProperty Name="PmntTx" ColumnName="PmntTx" />
+                <ScalarProperty Name="PmntFee" ColumnName="PmntFee" />
+                <ScalarProperty Name="Nmbr" ColumnName="Nmbr" />
+                <ScalarProperty Name="PmntNts" ColumnName="PmntNts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPmntMthd_admn">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblPmntMthd_admn">
+              <MappingFragment StoreEntitySet="tblPmntMthd_admn">
+                <ScalarProperty Name="PmntMthdID" ColumnName="PmntMthdID" />
+                <ScalarProperty Name="PmntMthdCd" ColumnName="PmntMthdCd" />
+                <ScalarProperty Name="PmntMthdDsc" ColumnName="PmntMthdDsc" />
+                <ScalarProperty Name="PmntMthdClss" ColumnName="PmntMthdClss" />
+                <ScalarProperty Name="MthdOrdrBy" ColumnName="MthdOrdrBy" />
+                <ScalarProperty Name="MthdFees" ColumnName="MthdFees" />
+                <ScalarProperty Name="MthdNts" ColumnName="MthdNts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStyls">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblStyl">
+              <MappingFragment StoreEntitySet="tblStyl">
+                <ScalarProperty Name="StylID" ColumnName="StylID" />
+                <ScalarProperty Name="Styl" ColumnName="Styl" />
+                <ScalarProperty Name="StylDsc" ColumnName="StylDsc" />
+                <ScalarProperty Name="StylTypIDfk" ColumnName="StylTypIDfk" />
+                <ScalarProperty Name="Actv" ColumnName="Actv" />
+                <ScalarProperty Name="Nts" ColumnName="Nts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStylSzs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblStylSz">
+              <MappingFragment StoreEntitySet="tblStylSz">
+                <ScalarProperty Name="StylIDfk" ColumnName="StylIDfk" />
+                <ScalarProperty Name="SzIDfk" ColumnName="SzIDfk" />
+                <ScalarProperty Name="StylSzID" ColumnName="StylSzID" />
+                <ScalarProperty Name="BsPrc" ColumnName="BsPrc" />
+                <ScalarProperty Name="Nts" ColumnName="Nts" />
+                <ScalarProperty Name="Actv" ColumnName="Actv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStylTyp_admn">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblStylTyp_admn">
+              <MappingFragment StoreEntitySet="tblStylTyp_admn">
+                <ScalarProperty Name="StylTypID" ColumnName="StylTypID" />
+                <ScalarProperty Name="StylTyp" ColumnName="StylTyp" />
+                <ScalarProperty Name="OrdrBy" ColumnName="OrdrBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSzs">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblSz">
+              <MappingFragment StoreEntitySet="tblSz">
+                <ScalarProperty Name="SzID" ColumnName="SzID" />
+                <ScalarProperty Name="Sz" ColumnName="Sz" />
+                <ScalarProperty Name="SzDsc" ColumnName="SzDsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTxCds">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblTxCd">
+              <MappingFragment StoreEntitySet="tblTxCd">
+                <ScalarProperty Name="TxCdID" ColumnName="TxCdID" />
+                <ScalarProperty Name="St" ColumnName="St" />
+                <ScalarProperty Name="Cty" ColumnName="Cty" />
+                <ScalarProperty Name="CtyCd" ColumnName="CtyCd" />
+                <ScalarProperty Name="CtyTxRt" ColumnName="CtyTxRt" />
+                <ScalarProperty Name="ZpCd" ColumnName="ZpCd" />
+                <ScalarProperty Name="Cnty" ColumnName="Cnty" />
+                <ScalarProperty Name="CntyCd" ColumnName="CntyCd" />
+                <ScalarProperty Name="CntyTxRt" ColumnName="CntyTxRt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsrLgns">
+            <EntityTypeMapping TypeName="Backyard_PortableModel.tblUsrLgn">
+              <MappingFragment StoreEntitySet="tblUsrLgn">
+                <ScalarProperty Name="UsrLgnID" ColumnName="UsrLgnID" />
+                <ScalarProperty Name="UsrLgn" ColumnName="UsrLgn" />
+                <ScalarProperty Name="UsrPwrd" ColumnName="UsrPwrd" />
+                <ScalarProperty Name="UsrAccssLvl" ColumnName="UsrAccssLvl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

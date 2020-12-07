@@ -1,0 +1,48 @@
+﻿@model BackyardPortableCSharp.Models.tblUsrLgn
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblUsrLgn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UsrLgn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsrLgn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsrPwrd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsrPwrd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsrAccssLvl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsrAccssLvl)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

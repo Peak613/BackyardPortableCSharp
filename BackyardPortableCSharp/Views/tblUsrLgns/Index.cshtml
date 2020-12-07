@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BackyardPortableCSharp.Models.tblUsrLgn>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UsrLgn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsrPwrd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsrAccssLvl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsrLgn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsrPwrd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsrAccssLvl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UsrLgnID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UsrLgnID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UsrLgnID })
+        </td>
+    </tr>
+}
+
+</table>

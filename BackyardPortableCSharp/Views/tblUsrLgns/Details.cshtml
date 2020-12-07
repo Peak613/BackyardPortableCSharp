@@ -1,0 +1,42 @@
+﻿@model BackyardPortableCSharp.Models.tblUsrLgn
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblUsrLgn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UsrLgn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsrLgn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsrPwrd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsrPwrd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsrAccssLvl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsrAccssLvl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UsrLgnID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
