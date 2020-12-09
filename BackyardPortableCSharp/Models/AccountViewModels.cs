@@ -54,9 +54,8 @@ namespace BackyardPortableCSharp.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -85,8 +84,8 @@ namespace BackyardPortableCSharp.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Hometown")]
-        public string Hometown { get; set; }
+        [Display(Name = "Username")]
+        public string Username { get; set; }
     }
 
     public class ResetPasswordViewModel
